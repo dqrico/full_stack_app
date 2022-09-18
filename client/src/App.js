@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, {useEffect} from "react";
 import './App.css';
+import NewGame from './components/NewGame';
+import AllGames from  './components/AllGames';
+import OneGame from './components/OneGame';
+import EditGame from './components/EditGame';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 
 function App() {
+
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {/* ASSIGNS COMPONENT TO PATH */}
+        <Routes>
+          <Route element={<AllGames/>} path="/" />
+          <Route element={<NewGame />} path="/new" />
+          <Route element={<OneGame />} path="/game/:id" />
+          <Route element={<EditGame/>} path="/game/edit/:id" />
+        </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
